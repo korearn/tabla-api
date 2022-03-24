@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 
 function App() {
 
+  function borrar(cod) {
+    const temp = articulos.filter((art)=>art.codigo !== cod);
+    setArticulos(temp)
+  }
+
   const [articulos, setArticulos] = useState([])
 
   useEffect(() => {
@@ -22,6 +27,7 @@ function App() {
             <th>Código</th>
             <th>Descripción</th>
             <th>Precio</th>
+            <th>Borrar</th>
           </tr>
         </thead>
         <tbody>
@@ -31,9 +37,10 @@ function App() {
                 <td>{art.codigo}</td>
                 <td>{art.descripcion}</td>
                 <td>{art.precio}</td>
+                <td><button onClick= {() => borrar(art.codigo) }>Borrar</button></td> 
               </tr>
-            );
-          })} 
+            );        
+          })}
         </tbody>
       </table>
     </div>
